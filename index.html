@@ -1,80 +1,1982 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>JumpBoxx — Adriano Pezzella</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-      }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      /* Reveal on scroll animations */
-      .reveal {
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .reveal.visible [data-reveal-item] {
-        animation: stagger-in 0.7s ease-out forwards;
-      }
-      .reveal.visible [data-reveal-item]:nth-child(1) { animation-delay: 0.05s; }
-      .reveal.visible [data-reveal-item]:nth-child(2) { animation-delay: 0.12s; }
-      .reveal.visible [data-reveal-item]:nth-child(3) { animation-delay: 0.18s; }
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-      @keyframes stagger-in {
-        from {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Marquee animation */
-      .marquee-track {
-        animation: marquee 60s linear infinite;
-      }
-      .marquee-container:hover .marquee-track {
-        animation-play-state: paused;
-      }
-      @keyframes marquee {
-        from { transform: translateX(0); }
-        to { transform: translateX(-50%); }
-      }
-    </style>
-
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "vite": "https://aistudiocdn.com/vite@^7.1.12",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.0"
-  }
-}
-</script>
-  <script type="module" crossorigin src="./assets/index-49191ef0.js"></script>
-  <link rel="stylesheet" href="./assets/index-a3c0ca1b.css">
-</head>
   <body>
-    <div id="root"></div>
+    <!-- ===============================================================
+       MAIN CONTENT WRAPPER -->
+    <div class="main-content">
+
+      <header class="header">
+        <div class="container nav-wrapper">
+          <div class="brand">
+            <!-- SVG LOGO -->
+            <a href="#top">
+              <!--<img  src="images/logo.svg" alt="JumpBoxx logo" class="logo" loading="lazy" /></a>-->
+              <svg class="logo" width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" class="text-gray-800 dark:text-white"><defs><linearGradient id="jbGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"></stop><stop offset="1" stop-color="#60A5FA"></stop></linearGradient></defs><g transform="translate(4, -8) scale(0.095)"><g><path d="M142,604L142,673L314,756L314,573L223,641L142,604Z" fill="url(#jbGrad)" stroke="currentColor" stroke-width="8" fill-opacity="0.15" stroke-opacity="0.2"></path><path d="M337,573L337,757L510,674L510,605L431,641L337,573Z" fill="url(#jbGrad)" stroke="currentColor" stroke-width="8" fill-opacity="0.2" stroke-opacity="0.2"></path><g fill="currentColor" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.2"><g transform="matrix(0.842055,-0.340098,1.70924,0.797274,-619.152,142.01)"><rect x="41" y="365" width="207" height="52" stroke-width="4.36"></rect></g><g transform="matrix(0.834199,-0.366482,1.54292,1.09177,-243.917,172.453)"><rect x="41" y="365" width="207" height="52" stroke-width="4.55"></rect></g><g transform="matrix(0.834096,0.339966,-1.65937,0.785264,1009.93,47.6191)"><rect x="41" y="365" width="207" height="52" stroke-width="8.11"></rect></g><g transform="matrix(0.840379,0.365757,-1.57027,1.04701,666.099,82.3632)"><rect x="41" y="365" width="207" height="52" stroke-width="7.11"></rect></g></g><g transform="matrix(0.763085,0.332116,-3.11505,1.28902,1436.32,-80.5098)"><rect x="41" y="365" width="207" height="52" fill="currentColor" stroke="none"></rect></g></g><g fill="currentColor" stroke="currentColor" stroke-width="8" transform="translate(20, 45)"><path d="M314,158C314,158 186.193,168.334 186,168C185.807,167.666 173.291,173.345 174,185C174.643,195.571 181.418,200.627 186,201C190.582,201.373 300,194 300,194L299,248L248,273L174,283C174,283 163.541,285.739 164,300C164.459,314.261 174.867,316.02 175,316C175.133,315.98 258,307 258,307L333,272L368,300L310,320C310,320 296.306,327.457 302,341C307.345,353.714 318.137,353.379 318,353C317.863,352.621 400,326 400,326C400,326 410.851,323.009 413,309C414.724,297.766 411,294 411,294L362,245L361,162L400,120L413,42C413,42 413.755,31.687 400,27C386.245,22.313 380.968,37.361 381,37C381.032,36.639 370,103 370,103L314,158Z"></path><g transform="matrix(1,0,0,1,16,10)"><circle cx="273" cy="95" r="45"></circle></g></g></g>
+              </svg>
+            
+            <span class="brand-name">JumpBoxx</span>
+
+          </div>
+
+          <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#clients">Clients</a>
+            <a href="#skills">Skills</a>
+            <a href="#process">Design Process</a>
+            <a href="#case-studies">Case Studies</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#awards">Awards</a>
+            <!--<a href="https://www.linkedin.com/in/adrianopezzella/" target="_blank" rel="noopener" class="btn-primary">
+              Contact
+            </a>-->
+          </nav>
+
+          <div class="header-controls">
+            <!-- THEME SWITCHER with SUN/MOON -->
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+              <svg
+                class="icon-sun"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg
+                class="icon-moon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="currentColor"
+              >
+                <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 1019 14.79 8.98 8.98 0 0121 12.79z"/>
+              </svg>
+            </button>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button id="menuToggle" class="button ghost" aria-label="Open menu" aria-expanded="false">
+              ☰
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE DRAWER -->
+        <nav id="mobileNav" class="mobile-nav">
+          <div class="mobile-nav-inner">
+            <a href="#about">About</a>
+            <a href="#clients">Clients</a>
+            <a href="#skills">Skills</a>
+            <a href="#process">Design Process</a>
+            <a href="#case-studies">Case Studies</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#awards">Awards</a>
+            <!--<a href="#contact" class="button primary">Contact</a>-->
+          </div>
+        </nav>
+      </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- ===============================================================
+         START OF MAIN CONTENT -->
+      <main id="top">
+
+
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section">
+          <div class="container grid grid-2">
+            <div class="hero-content">
+              <h1 style="font-size: 2.5rem">
+                Transforming vision into world-class digital experiences
+              </h1>
+              <p>
+                I lead teams to build future-ready products — combining
+                research, design systems, and engineering collaboration to
+                deliver measurable results. I explore AI to accelerate creative
+                workflows while preserving human-centered design.
+              </p>
+              <div style="display: flex; gap: 0.5rem; margin-top: 1rem">
+                <a href="#case-studies" class="btn-primary">View Case Studies</a>&nbsp;
+                <a href="#portfolio" class="btn-primary">View Project Showcase</a>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <img src="images/hero.jpg" alt="Hero visual" loading="lazy" />
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+        <!-- CLIENTS -->
+        <section id="clients" class="section scroll-in">
+          <div class="container reveal">
+            <h2>Selected Clients</h2>
+            <div class="marquee card">
+              <div class="marquee-track">
+                <img src="images/clients/Teladoc.svg" alt="Teladoc Health" height="32" />
+                <img src="images/clients/Walgreens.svg" alt="Walgreens" height="32" />
+                <img src="images/clients/Sysmex.svg" alt="Sysmex" height="32" />
+                <img src="images/clients/BCBS.svg" alt="Blue Cross and Blue Sheild" height="32" />
+                <img src="images/clients/Sears.svg" alt="Sears" height="32" />
+                <img src="images/clients/Officemax.svg" alt="OfficeMax" height="32" />
+                <img src="images/clients/Deluxe.svg" alt="Deluxe" height="32" />
+                <img src="images/clients/Potbelly.svg" alt="Potbelly" height="32" />
+                <img src="images/clients/Crowe.svg" alt="Crowe Horwath" height="32" />
+                <img src="images/clients/Allstate.svg" alt="Allstate" height="32" />
+                <img src="images/clients/Motorola.svg" alt="Motorola Solutions" height="32" />
+                <img src="images/clients/Navistar.svg" alt="Navistar" height="32" />
+                <img src="images/clients/USACE.svg" alt="United States Army Corps of Engineers" height="60" />
+                <img src="images/clients/Huron.svg" alt="Huron" height="32" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+        <!-- SKILLS -->
+        <section id="skills" class="section skills scroll-in">
+          <div class="container reveal">
+            <div class="skills-header">
+              <h2>Professional Skills</h2>
+            </div>
+
+            <div class="skills-grid">
+              <!-- Product Team Lead -->
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                      ></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+                  <h3>Product Team Lead</h3>
+                </div>
+                <p class="skill-short">Team leadership & strategy</p>
+                <p class="skill-desc">
+                  Lead cross-functional teams and guide product strategy to
+                  deliver measurable outcomes.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                  </div>
+                  <h3>Usability Testing</h3>
+                </div>
+                <p class="skill-short">Moderated &amp; remote testing</p>
+                <p class="skill-desc">
+                  Validate flows, reduce risk, and increase confidence with
+                  structured usability testing.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>User Centered Design</h3>
+                </div>
+                <p class="skill-short">Human-centered approach</p>
+                <p class="skill-desc">
+                  Design solutions that prioritize user needs and business goals
+                  through research and empathy.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Creative Direction</h3>
+                </div>
+                <p class="skill-short">Creative Direction</p>
+                <p class="skill-desc">
+                  Define and drive cohesive visual language and brand systems.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Design System</h3>
+                </div>
+                <p class="skill-short">Tokens &amp; components</p>
+                <p class="skill-desc">
+                  Build & govern scalable component libraries with accessibility
+                  in mind.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Wireframing</h3>
+                </div>
+                <p class="skill-short">Low-fi to high-fi prototypes</p>
+                <p class="skill-desc">
+                  Explore structure and flows rapidly before visual refinement.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Rapid Prototypes</h3>
+                </div>
+                <p class="skill-short">Clickable prototypes</p>
+                <p class="skill-desc">
+                  Interactive prototypes for testing and stakeholder alignment.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Mobile Design</h3>
+                </div>
+                <p class="skill-short">Mobile-first UX</p>
+                <p class="skill-desc">
+                  Design responsive, performant mobile experiences.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Branding &amp; Identity</h3>
+                </div>
+                <p class="skill-short">Brand systems</p>
+                <p class="skill-desc">
+                  Identity definition, tone, voice, and visual guidelines.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Business Requirements</h3>
+                </div>
+                <p class="skill-short">Product planning</p>
+                <p class="skill-desc">
+                  Translate stakeholder needs into clear, testable requirements.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Dev Team Management</h3>
+                </div>
+                <p class="skill-short">Engineering collaboration</p>
+                <p class="skill-desc">
+                  Coordinate front-end delivery, sprints, and quality.
+                </p>
+              </div>
+
+              <div class="skill-card">
+                <div class="skill-head">
+                  <div class="icon">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3>Front-end Development</h3>
+                </div>
+                <p class="skill-short">HTML / CSS / JS</p>
+                <p class="skill-desc">
+                  Hands-on implementation and component handoff.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- UX PROCESS -->
+        <section id="process" class="section scroll-in">
+          <div class="container process-wrapper">
+            <div class="process-card">
+              <div class="process-content">
+                <div class="process-text">
+                  <h2>User-Centered Design Process</h2>
+                  <p class="subtitle">
+                    Great products start with understanding users' needs,
+                    behaviors, and pain points.
+                  </p>
+                  <ol class="process-steps">
+                    <li>
+                      <span class="step-number">1</span>
+                      <div>
+                        <h3>Understand & Plan</h3>
+                        <p>
+                          Deep empathy for the customer through research,
+                          interviews, and journey mapping.
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="step-number">2</span>
+                      <div>
+                        <h3>Define</h3>
+                        <p>
+                          Problem framing and success metrics to align with
+                          business goals.
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="step-number">3</span>
+                      <div>
+                        <h3>Design</h3>
+                        <p>
+                          Iterative wireframes, prototypes, and visual design to
+                          bring ideas to life.
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="step-number">4</span>
+                      <div>
+                        <h3>Validate</h3>
+                        <p>
+                          Usability testing and analytics-driven iteration to
+                          ensure solutions work.
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="step-number">5</span>
+                      <div>
+                        <h3>Implement & Evaluate</h3>
+                        <p>
+                          Collaborate with engineers and measure outcomes for
+                          continuous improvement.
+                        </p>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+
+                <div class="process-graphic">
+                  <img src="images/ux_process_circle.png" alt="UX Process Wheel" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- CASE STUDIES -->
+        <section id="case-studies" class="section scroll-in">
+          <div class="container case-studies-wrapper">
+            <div class="section-header">
+              <h2>Case Studies</h2>
+              <p class="subtitle">Detailed examples of my work</p>
+            </div>
+
+            <div class="case-grid">
+              <!-- Teladoc -->
+              <div class="case-card">
+                <img src="images/case_studies/teladoc/teladoc-casestudy.png" alt="Teladoc After Visit Summary" class="case-thumb" loading="lazy" />
+                <div class="case-info">
+                  <h3>Teladoc — After-Visit Summary</h3>
+                  <p>
+                    Design sprint improving patient post-visit communications.
+                  </p>
+                  <button class="btn-primary" onclick="toggleOverlay('teladocCase', true)" >
+                    View Case Study
+                  </button>
+                </div>
+              </div>
+
+              <!-- Walgreens -->
+              <div class="case-card">
+                <img src="images/case_studies/walgreens/walgreens-casestudy.png" alt="Walgreens Pharmacy Renewal" class="case-thumb" loading="lazy" />
+                <div class="case-info">
+                  <h3>Walgreens — Pharmacy Renewal</h3>
+                  <p>
+                    Enterprise modernization of pharmacy operations and systems.
+                  </p>
+                  <button class="btn-primary" onclick="toggleOverlay('walgreensCase', true)" >
+                    View Case Study
+                  </button>
+                </div>
+
+              </div><!-- /case-card -->
+            </div><!-- /case-grid -->
+          </div><!-- /case-studies-wrapper -->
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- PROJECT PORTFOLIO SHOWCASE -->
+        <section id="portfolio" class="section scroll-in">
+          <div class="container portfolio-wrapper">
+            <div class="section-header">
+              <h2>Portfolio</h2>
+              <p class="subtitle">A selection of my projects</p>
+            </div>
+
+            <div class="project-grid">
+
+
+
+             
+
+              <!-- Teladoc -->
+              <div class="project-card" onclick="toggleOverlay('showcase-teladoc', true)" >
+                <img src="images/showcase/teladoc/card-teladoc.jpg" alt="Teladoc Health Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Teladoc Health</h3>
+                  <p class="project-subtitle">E-commerce platform redesign</p>
+                </div>
+              </div>
+
+              <!-- Walgreens -->
+              <div class="project-card" onclick="toggleOverlay('showcase-walgreens', true)" >
+                <img src="images/showcase/walgreens/card-walgreens.jpg" alt="Walgreens Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Walgreens</h3>
+                  <p class="project-subtitle">Pharmacy management system</p>
+                </div>
+              </div>
+
+              <!-- Deluxe -->
+              <div class="project-card" onclick="toggleOverlay('showcase-deluxe', true)">
+                <img src="images/showcase/deluxe/card-deluxe.jpg" alt="Deluxe Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Deluxe</h3>
+                  <p class="project-subtitle">eCommerce site redesign</p>
+                </div>
+              </div>
+
+              <!-- Tahoe Partners -->
+              <div class="project-card" onclick="toggleOverlay('showcase-tahoe', true)" >
+                <img src="images/showcase/tahoe/card-tahoe.jpg" alt="Tahoe Partners Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Tahoe Partners</h3>
+                  <p class="project-subtitle">Enterprise solutions UX</p>
+                </div>
+              </div>
+
+              <!-- Crowe -->
+              <div class="project-card" onclick="toggleOverlay('showcase-crowe', true)" >
+                <img src="images/showcase/crowe/card-crowe.jpg" alt="Crowe Horwath Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Crowe Horwath</h3>
+                  <p class="project-subtitle">UI framework and design system</p>
+                </div>
+              </div>
+
+              <!-- Blue Cross -->
+              <div class="project-card" onclick="toggleOverlay('showcase-bcbs', true)" >
+                <img src="images/showcase/bcbs/card-bcbs.jpg" alt="BlueCross BlueShield Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>BlueCross BlueShield</h3>
+                  <p class="project-subtitle">
+                    Product design & UI engineering
+                  </p>
+                </div>
+              </div>
+
+              <!-- Dearborn National-->
+              <div class="project-card" onclick="toggleOverlay('showcase-dearborn', true)" >
+                <img src="images/showcase/dearborn/card-dearborn.jpg" alt="Dearborn National Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Dearborn National</h3>
+                  <p class="project-subtitle">
+                    Internet membership portal design
+                  </p>
+                </div>
+              </div>
+
+              <!-- Potbelly -->
+              <div class="project-card" onclick="toggleOverlay('showcase-potbelly', true)">
+                <img src="images/showcase/potbelly/card-potbelly.jpg" alt="Potbelly Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Potbelly</h3>
+                  <p class="project-subtitle">
+                    Customer-facing website redesign
+                  </p>
+                </div>
+              </div>
+
+              <!-- OfficeMax -->
+              <div class="project-card" onclick="toggleOverlay('showcase-officemax', true)" >
+                <img src="images/showcase/officemax/card-officemax.jpg" alt="OfficeMax Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>OfficeMax</h3>
+                  <p class="project-subtitle">E-commerce site redesign</p>
+                </div>
+              </div>
+
+              <!-- Huron -->
+              <div class="project-card" onclick="toggleOverlay('showcase-huron', true)" >
+                <img src="images/showcase/huron/card-huron.jpg" alt="Huron Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Huron</h3>
+                  <p class="project-subtitle">Award-winning intranet portal</p>
+                </div>
+              </div>
+
+              <!-- Sears -->
+              <div class="project-card" onclick="toggleOverlay('showcase-sears', true)" >
+                <img src="images/showcase/sears/card-sears.jpg" alt="Sears Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>Sears</h3>
+                  <p class="project-subtitle">
+                    Retail websites design & Development
+                  </p>
+                </div>
+              </div>
+
+              <!-- NCH -->
+              <div class="project-card" onclick="toggleOverlay('showcase-nch', true)" >
+                <img src="images/showcase/nch/card-nch.jpg" alt="NCH Marketing Services Project" loading="lazy" />
+                <div class="project-info">
+                  <h3>NCH Marketing Services</h3>
+                  <p class="project-subtitle">
+                    Payment policies process application
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- =============================
+     AWARDS
+     ============================= -->
+        <section id="awards" class="section scroll-in">
+          <div class="container awards-wrapper">
+            <div class="awards-card">
+              <img src="images/nng-winner.png" alt="Nielsen Norman Group Award" class="award-img" loading="lazy" />
+              <div class="award-info">
+                <h2>Awards</h2>
+                <div class="award-meta">
+                  <img src="images/nng-useit.png" alt="Nielsen Norman Group" class="award-logo" loading="lazy" />
+                  <!--<h3>Nielsen Norman Group</h3>-->
+                </div>
+                <h3>
+                  🏆 Award-Winning Intranet Design — Huron Consulting Group
+                </h3>
+                <p>
+                  Recognized with the
+                  <strong>Annual Intranet Design Award</strong> for outstanding
+                  usability and innovation. Selected by renowned usability
+                  expert <strong>Jakob Nielsen</strong> for excellence in user
+                  experience and interface design.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+      </main>
+      <!-- ================================================================
+     END OF MAIN CONTENT -->
+
+
+
+
+
+
+
+
+
+
+
+      <!-- =============================
+     FOOTER / LET'S WORK TOGETHER
+     ============================= -->
+      <footer id="contact" class="footer-cta">
+        <div class="footer-inner container">
+          <div class="footer-text">
+            <h2>Let's work together</h2>
+            <p>
+              Interested in product design leadership, design systems, or
+              next-gen UX work? Let's connect.
+            </p>
+          </div>
+
+          <a href="https://www.linkedin.com/in/adrianopezzella/" target="_blank" rel="noopener" class="btn-primary" >
+            Reach me on LinkedIn
+          </a>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>© <span id="year"></span> JumpBoxx Design</p>
+        </div>
+      </footer>
+
+
+    </div>
+
     
+    <!-- ===============================================================
+       END OF MAIN CONTENT -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================================================================================
+OVERLAYS
+====================================================================================
+====================================================================================
+====================================================================================
+====================================================================================
+-->
+
+<!-- Teladoc Case Study -->
+<div id="teladocCase" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('teladocCase', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h1>Teladoc — After-Visit Summary</h1>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Design Sprint — Improving patient post-visit communications.</p>
+
+        <div class="layout-full">
+            <img src="images/case_studies/teladoc/teladoc-avs-design-sprint-01.png" alt="Design sprint" />
+
+<h2>Overview</h2>
+<p>In a short one-week design sprint, I led a project to reimagine Teladoc's After Visit Summary (AVS). The goal was to enhance the patient experience by improving understanding and engagement post-visit, creating a solution scalable across Teladoc's diverse product portfolio.</p>
+
+<h2>My Role</h2>
+<p>As the Lead UX Product Designer, I was responsible for all aspects of the project from initial research and brainstorming to design, prototyping, and user testing. The aim was to enhance the visit summary experience to improve patient understanding and engagement after a telemedicine visit, while also creating a solution that could scale across Teladoc's diverse product portfolio. The sprint culminated in a concept prototype that was presented to Teladoc's senior leadership as a vision for a better AVS.</p>
+
+<h2>Project Goal</h2>
+
+<div class="float-context">
+
+  <img src="images/case_studies/teladoc/teladoc-patient-01.png" alt="Doctor making a patient visit" class="float-right w-25" />
+
+  <p>The goal of this design sprint was to improve patient outcomes by delivering a clearer, more actionable After Visit Summary. In practice, this meant:</p>
+  <ul>
+    <li><strong>Highlighting Critical Information:</strong> Ensuring patients can quickly identify the most important details from their visit (e.g. diagnosis, key instructions, next steps).</li>
+    <li><strong>Actionable Next Steps:</strong> Presenting post-visit tasks (like taking medication or scheduling a follow-up) in a way that encourages patients to act on them.</li>
+    <li><strong>One Scalable Solution:</strong> Designing a single, unified Visit Summary that could be adapted and used across all of Teladoc's products and services, providing a consistent experience for patients regardless of the type of visit.</li>
+  </ul>
+</div>
+
+
+<h2>After Visit Summary - Current State</h2>
+<p>The existing After Visit Summary was a basic document that provided minimal information about the telemedicine visit. It often lacked clarity, was difficult to read, and did not effectively guide patients on what to do next. Key issues included:</p>
+
+<ul>
+  <li><strong>Sparse Information:</strong> The summary often omitted important details such as clear next steps, medication instructions, and follow-up recommendations.
+  </li>
+  <li><strong>Poor Readability:</strong> The layout and typography made it hard for patients to quickly scan and understand the content.</li>
+  <li><strong>Lack of Engagement:</strong> The summary did not actively engage patients or encourage them to take action on their care plan.</li>
+  <li><strong>Inconsistency Across Products:</strong> Different Teladoc products had varying formats and content for their visit summaries, leading to confusion among patients.</li>
+</ul>
+
+
+
+<h3>Original State of the After Visit Summary Example</h3>
+<img src="images/case_studies/teladoc/teladoc-avs-legacy.png" alt="Teladoc current state AVS" class="">
+
+
+
+<h2>Discovery Phase</h2>
+
+<div class="float-context">
+
+<img src="images/case_studies/teladoc/teladoc-avs-design-sprint-02.png" alt="Teladoc design sprint" class="w-50 float-right" />
+
+<p>To kick off the project, I conducted a rapid discovery phase to gather insights and understand the problem space. This included reviewing the existing summary, brainstorming with stakeholders, interviewing experts, analyzing competitors, and researching industry best practices.</p>
+
+<ul>
+  <li><strong>Existing Summary Audit:</strong> Reviewed the current state of the Teladoc Visit Summary to identify pain points, missing information, and scalability issues across different products.</li>
+  <li><strong>Brainstorming Workshops:</strong> Held quick brainstorming sessions with product owners and stakeholders to generate initial ideas for improving the AVS.</li>
+  <li><strong>Expert Interviews:</strong> Interviewed subject matter experts (clinicians, patient advocates, Teladoc support staff) to learn where patients struggle with understanding their visit information.</li>
+  <li><strong>Competitive Analysis:</strong> Analyzed how other telehealth platforms and healthcare providers present after-visit summaries, noting best practices and innovative features.</li>
+  <li><strong>Industry Best Practices:</strong> Researched healthcare communication standards and health literacy guidelines to ensure our redesign would be patient-friendly and effective.</li>
+</ul>
+</div>
+
+
+
+
+<h2>Key Findings</h2>
+<p>The research and discovery activities uncovered several critical insights that guided the redesign:</p>
+
+<ul>
+  <li><strong>High Information Loss:</strong> Patients forget 40-80% of medical information given during a visit, with only about 50% retained on average.</li>
+  <li><strong>Complexity Increases Forgetfulness:</strong> More complex diagnoses lead to higher forgetfulness; patients focus on critical info, ignoring the rest.</li>
+  <li><strong>Legacy Summary Gaps:</strong> The existing AVS was sparse, inconsistent, and lacked important details like clear next steps.</li>
+  <li><strong>Need for Guidance:</strong> A redesigned AVS should actively guide patients in their post-visit care, helping them understand and act on clinician instructions.</li>
+</ul>
+
+
+
+
+<h2>Challenges & Constraints</h2>
+<p>The project faced challenges such as a compressed timeline, a non-standard process due to the rapid pace, and the need to align the new AVS design across multiple Teladoc products.</p>
+
+<ul>
+  <li><strong>Compressed Timeline:</strong> The design sprint was limited to just three weeks, requiring condensed activities and critical time management.</li>
+  <li><strong>Non-Standard Process:</strong> The rapid timeline meant prioritizing essential tasks and making quick decisions, skipping some typical UX steps.</li>
+  <li><strong>Alignment with Multiple Products:</strong> Ensuring the new AVS design could work across Teladoc's diverse product lines required flexibility and adaptability.</li>
+</ul>
+
+
+
+<h2>Teladoc Products</h2>
+<img src="images/case_studies/teladoc/teladoc-companies.png" alt="Teladoc companies" class="" />
+
+
+<h2>Design & Iteration Process</h2>
+<p>
+Despite the constraints, I followed a structured yet lightning-fast design process involving concept ideation, quick reviews, refinement, high-fidelity prototyping, and rapid iteration.</p>
+
+<ul>
+  <li><strong>Ideation:</strong> Sketched multiple concepts for the summary layout and content organization.</li>
+  <li><strong>Quick Reviews:</strong> Reviewed early concepts with stakeholders for immediate feedback.</li>
+  <li><strong>Refinement:</strong> Combined the most promising elements into a cohesive design.</li>
+  <li><strong>High-Fidelity Prototype:</strong> Built a clickable prototype reflecting the new layout and visual style.</li>
+  <li><strong>Rapid Iteration:</strong> Continued to iterate on details to fine-tune the user experience.</li>
+</ul>
+
+
+<h2>Requirements & Design Solutions</h2>
+<ul>
+  <li><strong>Warm, Engaging Greeting:</strong> Make the experience feel personal and caring.</li>
+  <li><strong>Clear Visit Recap:</strong> Provide a structured post-visit overview.</li>
+  <li><strong>Checklist of Recommendations:</strong> Make it easy for patients to see required actions.
+  <li><strong>Easy-to-Read Treatment Plan:</strong> Present information in a clear, digestible format.</li>
+  <li><strong>Plain Language:</strong> Rewrite medical terminology to ensure comprehension for all literacy levels.</li>
+  <li><strong>Simplified Medication List:</strong> Display prescribed medications in a simple list with relevant details.</li>
+  <li><strong>Follow-Up and Alerts:</strong> Highlight required follow-up and warning signs.</li>
+  <li><strong>Printable & Accessible Format:</strong> Design for easy printing and viewing on all devices.</li>
+</ul>
+
+
+<h2>Redesigned After Visit Summary</h2>
+<img src="images/case_studies/teladoc/teladoc-avs-01.png" alt="Teladoc After Visit Summary" class="">
+
+
+<h2>Actionable Checklist</h2>
+<p>A key feature of the redesigned AVS was an actionable checklist that clearly outlined the next steps for patients. This included:</p>
+
+<ul>
+  <li><strong>Medication Instructions:</strong> Clear directions on how and when to take prescribed medications.</li>
+  <li><strong>Lab Tests:</strong> Information on any required lab tests, including how to schedule them.</li>
+  <li><strong>Follow-Up Appointments:</strong> Guidance on scheduling necessary follow-up visits.</li>
+  <li><strong>Lifestyle Recommendations:</strong> Simple tips for diet, exercise, and other lifestyle changes.</li>
+</ul>
+
+
+<div class="layout-2col">
+  <div>
+    <h3>Prescription Guidance</h3>
+    <img src="images/case_studies/teladoc/teladoc-avs-checklist-01.png" alt="Checklist Prescription" class="" />
+  </div>
+
+  <div>
+    <h3>Labs Activate</h3>
+    <img src="images/case_studies/teladoc/teladoc-avs-checklist-02.png" alt="Checklist Labs activate" class="" />
+  </div>
+</div>
+
+
+<div class="layout-2col">
+  <div>
+    <h3>Labs View Results</h3>
+    <img src="images/case_studies/teladoc/teladoc-avs-checklist-03.png" alt="Checklist Visit lab" class="" />
+  </div>
+
+  <div>
+    <h3>Follow-Up Appointment</h3>
+    <img src="images/case_studies/teladoc/teladoc-avs-checklist-04.png" alt="Checklist Follow up Appointment" class="" />
+  </div>
+</div>
+
+
+
+
+
+<h2>Responsive for Mobile</h2>
+<p>Given the high likelihood of patients accessing their After Visit Summary on mobile devices, I ensured the design was fully responsive. Key considerations included:</p>
+
+<ul>
+  <li><strong>Mobile-First Layout:</strong> Designed the AVS to prioritize mobile usability, ensuring key information was easily accessible on smaller screens.</li>
+  <li><strong>Touch-Friendly Elements:</strong> Used larger buttons and touch targets to facilitate easy interaction on mobile devices.</li>
+  <li><strong>Optimized Readability:</strong> Adjusted font sizes, line spacing, and content organization for optimal reading on mobile screens.</li>
+  <li><strong>Consistent Experience:</strong> Maintained a consistent look and feel across desktop and mobile versions to reinforce brand identity and user familiarity.</li>
+</ul>
+
+<div class="layout-2col">
+  <img src="images/case_studies/teladoc/teladoc-avs-mobile-01.png" alt="Teladoc AVS Mobile 1" class="w-75" />
+  <img src="images/case_studies/teladoc/teladoc-avs-mobile-02.png" alt="Teladoc AVS Mobile 2" class="w-75" />
+</div>
+
+
+
+<h2>Design System Integration</h2>
+
+<p>I implemented Teladoc's evolving design system standards to ensure consistency, scalability, and accessibility across the AVS experience. This included typography, color schemes, iconography, and accessibility considerations.</p>
+
+<div class="float-context">
+
+  <img src="images/case_studies/teladoc/teladoc-colors-02.png" alt="Teladoc AVS Design Colors" class="w-50 float-right" />
+
+
+  <ul>
+    <li><strong>Typography & Spacing:</strong> Applied standardized font sizes, weights, and spacing rules to improve readability and maintain alignment with other digital experiences.</li>
+    <li><strong>Color & UI Elements:</strong> Incorporated brand-approved colors and components for headings, buttons, and callouts, ensuring a cohesive look and feel that aligns with Teladoc's digital ecosystem.</li>
+    <li><strong>Iconography & Visual Hierarchy:</strong> Used design system icons and a clear information hierarchy to guide users through key sections (e.g., using icons to indicate medications, warnings, and action items).</li>
+    <li><strong>Accessibility Considerations:</strong> Ensured contrast ratios, font sizes, and interactive elements adhered to WCAG standards, improving usability for all patients, including those with visual impairments or cognitive challenges.</li>
+    <li><strong>Scalability Across Products:</strong> Designed modular sections that could be easily adapted for different Teladoc services, reinforcing the flexibility of the design system while allowing customization as needed.</li>
+  </ul>
+  <p>By aligning the AVS redesign with Teladoc's work-in-progress design system, I helped establish a strong foundation for future product consistency while streamlining future development efforts.</p>
+</div>
+
+
+
+
+
+
+<h2>User Testing & Feedback</h2>
+
+
+<div class="float-context">
+
+  <img src="images/case_studies/teladoc/teladoc-patient-02.png" alt="Right-aligned image 1" class="w-33 float-left" />
+
+  <p>Usability tests with telehealth users showed overwhelmingly positive feedback. Participants found the new AVS much clearer and more informative, particularly appreciating the checklist of next steps and plain-language explanations.</p>
+  <ul>
+    <strong>
+      <li>Testing Sessions: Conducted remote user testing sessions with telehealth users to gather feedback on the prototype.</li>
+    </strong>
+    <li><strong>Positive Reactions:</strong> Users found the new AVS clearer and more informative than previous versions.</li>
+    <li><strong>High Impact of Small Changes:</strong> Even straightforward additions had a significant impact on user satisfaction and confidence.</li>
+    <li><strong>Iterative Feedback:</strong> Minor suggestions were noted for future refinement, with no major usability issues uncovered.</li>
+  </ul>
+</div>
+
+
+
+<h2>Outcomes & Impact</h2>
+<p>The final concept was packaged into a presentation and delivered to Teladoc's senior leadership at the end of the sprint:</p>
+
+<ul>
+  <li><strong>Presentation to Leadership:</strong> Delivered a comprehensive presentation showcasing the redesigned AVS concept, user testing results, and the rationale behind design decisions.</li>
+  <li><strong>Positive Feedback:</strong> Leadership responded positively, appreciating the user-centered approach and potential business impact.</li>
+  <li><strong>Scalability Discussion:</strong> Discussed how the new AVS could be implemented across various Teladoc products for a consistent patient experience.</li>
+  <li><strong>Project Status:</strong> Due to other priorities, the project was placed on hold post-presentation, with the concept stored in the backlog for future development.</li>
+</ul>
+
+
+
+
+<h2>Conclusion</h2>
+<p>This case study demonstrates how a focused design sprint can yield high-impact UX improvements in a short time frame. In just three weeks, I was able to identify core issues, explore solutions, and validate a much-improved After Visit Summary that stands to benefit both patients and Teladoc's business. The experience required balancing thorough research with rapid iteration, and making strategic design decisions under tight constraints. The resulting concept shows clear enhancements in patient understanding and engagement, and it provides a strong foundation that Teladoc can build upon when the project moves forward.</p>
+
+<p>Overall, this project highlights the ability to drive end-to-end UX efforts quickly and effectively - from insight gathering to polished prototype - and to deliver a solution that resonates with users and stakeholders alike.</p>
+
+
+        </div><!-- .layout-full -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Walgreens Case Study -->
+<div id="walgreensCase" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('walgreensCase', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h1>Walgreens — Pharmacy Renewal</h1>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Lead Product Designer — Enterprise modernization of pharmacy
+              operations and systems.</p>
+
+        <div class="layout-full">
+<img src="images/case_studies/walgreens/walgreens-storefront.png" alt="Walgreens store" class="w-100 float-center" loading="lazy" />
+
+
+<h2>Introduction</h2>
+<p>Walgreens is a community pharmacy store chain founded in 1901 in Chicago. Walgreens merged with Alliance Boots in 2014 and now has over 18,500 stores in 11 countries.</p>
+
+<img src="images/case_studies/walgreens/walgreens-1900s.png" alt="Walgreens store 1900s" class="w-75 float-left" loading="lazy" />
+
+
+
+
+<h2>Project Overview</h2>
+<p>The Walgreens Pharmacy Renewal project aimed to overhaul a 25-year-old pharmacy management and inventory systems. The objective was to create a state-of-the-art solution that improved operational efficiency, reduced staff workload, and enhanced patient care. The new system impacted thousands of users across numerous touchpoints worldwide. The ultimate goal was to create a nimble pharmacy platform that advances the manner in which Walgreens cares for patients, providing a flexible technology foundation to solve a variety of pharmacy-related challenges.</p>
+
+<div class="float-context">
+
+  <h2>My Role</h2>
+
+  <p>As the Lead Product Designer on this project, I led multiple teams of user experience designers, UX researchers, creative visual designers, and software engineers. I was responsible for defining the overall UI standards, patterns, and design language for the new pharmacy platform. Some of the key projects and tasks I led included:</p>
+
+  <img src="images/case_studies/walgreens/project-planning.png" alt="Implementation" class="w-50 float-right" loading="lazy" />
+
+  <ul>
+    <li>Coordinating cross-functional teams including product management, business analysts, product designers, user researchers, developers, and QA testers</li>
+    <li>Establishing the design system and governing its adoption</li>
+    <li>Leading workshops and brainstorming sessions to generate innovative solutions</li>
+    <li>Conducting user research, interviews, and usability testing to inform design decisions</li>
+    <li>Facilitating design reviews and feedback sessions with stakeholders</li>
+    <li>Collaborating with developers to ensure technical feasibility of designs</li>
+    <li>Developing the global framework and navigation, page layouts, app switching, menu architecture, and interaction models</li>
+    <li>Creating detailed UI specifications and assets for development teams</li>
+    <li>Overseeing the implementation of designs to ensure fidelity to the original vision</li>
+    <li>Mentoring junior designers and fostering a collaborative design culture</li>
+    <li>Defining access management, user session handling, and roles and permissions</li>
+    <li>Creating wireframes, prototypes, and high-fidelity visual designs</li>
+    <li>Designing dashboards and landing page experiences</li>
+  </ul>
+</div>
+
+
+
+<h2>The Challenge</h2>
+<p>Walgreens was operating on a 25-year-old system that was inefficient and unable to meet modern demands. It hindered efficiency, lacked a user-centric design causing a steep learning curve, and impaired customer service.</p>
+
+<div class="layout-2col">
+  <img src="images/case_studies/walgreens/wal-as400-01.png" alt="Walgreens legacy system" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-as400-02.png" alt="Walgreens legacy system" class="w-100 float-center" loading="lazy" />
+</div>
+
+
+
+
+<h2>Research and Insights</h2>
+<p>Extensive user research revealed key pain points including complex navigation, inefficient workflows, and a lack of integration with modern pharmacy practices. Insights highlighted the need for a user-friendly interface that prioritized patient safety and streamlined operations.</p>
+
+<div class="layout-2col">
+  <img src="images/case_studies/walgreens/wal-research-01.jpg" alt="Walgreens user research" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-research-02.jpg" alt="Walgreens user research" class="w-100 float-center" loading="lazy" />
+</div>
+
+
+<p>To better understand the users' pain points and needs, the team conducted a series of user research activities:</p>
+
+<ul>
+  <li>User interviews to gain insights into the current challenges and pain points</li>
+  <li>Contextual inquiries to observe users in their natural work environment</li>
+  <li>Surveys to gather quantitative data on user satisfaction and needs</li>
+  <li>Usability testing of existing systems to identify specific areas for improvement</li>
+  <li>Journey mapping workshops to visualize and analyze the existing workflows</li>
+  <li>Pharmacy forum events to gather feedback on design concepts and prototypes</li>
+</ul>
+
+
+
+<h2>Key Findings</h2>
+<ul>
+  <li>Users struggled with complex navigation and inefficient workflows</li>
+  <li>New users struggled to learn and navigate the old system</li>
+  <li>The existing system lacked integration with modern pharmacy practices</li>
+  <li>There was a need for a user-friendly interface that prioritized patient safety</li>
+  <li>Staff required better tools to manage inventory and patient interactions</li>
+  <li>Customization based on user roles was essential for efficiency</li>
+</ul>
+
+
+
+
+<h2>Design Process</h2>
+<p>The design process followed a user-centered approach, starting with low-fidelity wireframes and progressing to high-fidelity prototypes. Key design principles included simplicity, clarity, and accessibility. The team utilized iterative testing and feedback loops to refine the designs continuously.</p>
+
+<img src="images/case_studies/walgreens/wal-design-process-01.png" alt="Walgreens Design Process" class="w-75 float-center" loading="lazy" />
+
+
+<h3>Key steps in the design process included:</h3>
+
+<ul>
+  <li>Developing user journey maps to visualize workflows and identify pain points</li>
+  <li>Creating user personas to represent different user types and their needs</li>
+  <li>Sketching and wireframing initial design concepts</li>
+  <li>Building interactive prototypes for usability testing</li>
+  <li>Conducting iterative usability tests to gather feedback and refine designs</li>
+  <li>Collaborating with developers to ensure technical feasibility</li>
+  <li>Establishing a design system for consistency across the platform</li>
+</ul>
+
+
+
+<h2>User Journey Mapping</h2>
+<p>User journey maps were created to visualize the end-to-end experience of pharmacy staff using the system. These maps helped identify pain points, opportunities for improvement, and key touchpoints that needed to be addressed in the design.</p>
+
+<div class="layout-2col">
+  <img src="images/case_studies/walgreens/wal-design-process-02.png" alt="Walgreens design process" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-design-process-03.png" alt="Walgreens design process" class="w-100 float-center" loading="lazy" />
+</div>
+
+
+
+<h2>User Personas</h2>
+<p>To ensure the design met the needs of various users, detailed personas were created representing pharmacists, pharmacy technicians, and store managers. These personas guided design decisions and helped prioritize features based on user needs.</p>
+
+<div class="layout-2col">
+  <img src="images/case_studies/walgreens/wal-personas-01.png" alt="Walgreens pharmacists persona" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-personas-02.png" alt="Walgreens techni persona" class="w-100 float-center" loading="lazy" />
+</div>
+
+
+
+<h2>Key Features and Innovations</h2>
+<ul>
+  <li>
+    <strong>Intuitive User Interface:</strong>
+    A modern, user-friendly design that simplifies navigation and reduces training time.
+  </li>
+  <li>
+    <strong>Streamlined Workflows:</strong>
+    Optimized processes for prescription management, inventory tracking, and patient interactions.
+  </li>
+  <li>
+    <strong>Integrated Systems:</strong>
+    Seamless integration with other healthcare systems for improved data accuracy and accessibility.
+  </li>
+  <li>
+    <strong>Role-Based Access:</strong>
+    Customized interfaces and permissions based on user roles to enhance security and usability.
+  </li>
+  <li>
+    <strong>Real-Time Analytics:</strong>
+    Dashboards providing insights into pharmacy operations and performance metrics.
+  </li>
+  <li>
+    <strong>Mobile Accessibility:</strong>
+    Responsive design allowing access from various devices for on-the-go management.
+  </li>
+</ul>
+
+
+<h2>Challenges and Solutions</h2>
+<p>During the project, several challenges arose including resistance to change from staff accustomed to the old system, technical limitations, and ensuring data security. These were addressed through extensive training, close collaboration with IT teams, and implementing robust security protocols.</p>
+
+
+
+<h2>Figma - Site Flow</h2>
+<p>The design team utilized Figma to create a comprehensive set of page designs that illustrated and annotated the user flow and interactions within the new pharmacy system. This visual representation helped stakeholders understand the user experience and provided a clear roadmap for development.</p>
+
+  <img src="images/case_studies/walgreens/wal-flow-tma-01.png" alt="Figma page designs flow" class="w-75 float-center" loading="lazy" />
+
+
+
+
+<h2>Wireframes</h2>
+<p>Low-fidelity wireframes were developed to outline the basic structure and layout of key screens. These wireframes served as a foundation for discussions and iterations before moving into high-fidelity designs.</p>
+
+<div class="layout-3col">
+  <img src="images/case_studies/walgreens/wal-wireframe-01.png" alt="Wireframe" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-wireframe-02.png" alt="Wireframe" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-wireframe-02.png" alt="Wireframe" class="w-100 float-center" loading="lazy" />
+</div>
+
+
+
+
+
+<h2>Design System</h2>
+<p>A comprehensive design system was developed to ensure consistency across the platform. This included a library of reusable components, Figma library, standardized color schemes, typography, and interaction patterns. The design system facilitated collaboration between designers and developers, speeding up the development process and ensuring a cohesive user experience.</p>
+
+<h3>Design System - Color Palette</h3>
+<img src="images/case_studies/walgreens/wal-design-system-01.png" alt="Design system" class="w-75 float-center" loading="lazy" />
+
+
+<h3>Design System - Components</h3>
+<img src="images/case_studies/walgreens/wal-design-system-02.png" alt="Design system" class="w-75 float-center" loading="lazy" />
+
+<img src="images/case_studies/walgreens/wal-design-system-03.png" alt="Design system" class="w-75 float-center" loading="lazy" />
+<h3>Design System - Redline Specs</h3>
+<img src="images/case_studies/walgreens/wal-design-system-04.png" alt="Design system" class="w-75 float-center" loading="lazy" />
+
+
+
+
+
+<h2>Implementation and Rollout</h2>
+
+<div class="float-context">
+  <img src="images/case_studies/walgreens/wal-implementation-01.png" alt="Implementation" class="w-33 float-right" loading="lazy" />
+
+  <p>The implementation involved phased rollouts across multiple locations, with comprehensive training programs for staff. Continuous support and feedback mechanisms were established to ensure smooth adoption and address any issues promptly.</p>
+
+  <p>Key steps in the implementation process included:</p>
+
+  <ul>
+    <li><string>Pilot Testing:</string> Conducted initial rollouts in select locations to gather feedback and make necessary adjustments.</li>
+    <li><strong>Training Programs:</strong> Developed comprehensive training materials and sessions to ensure staff were comfortable with the new system.</li>
+    <li><strong>Phased Rollout:</strong> Implemented the new system in phases across all locations to manage change effectively.</li>
+    <li><strong>Ongoing Support:</strong> Established help desks and support teams to assist users during the transition period.</li>
+    <li><strong>Feedback Mechanisms:</strong> Created channels for users to provide feedback and report issues for continuous improvement.</li>
+  </ul>
+
+</div>
+
+
+
+<h2>Design Solutions</h2>
+<p>The design solutions focused on creating an intuitive user interface that prioritized ease of use and efficiency. Key design elements included clear navigation, simplified workflows, and accessible information architecture. The team also emphasized responsive design to ensure usability across various devices.</p>
+
+<p>Some of the major design solutions developed for the Pharmacy Renewal project included:</p>
+
+<ul>
+  <li><strong>Global Home Dashboard:</strong> A central hub for all pharmacy tasks, including prescription intake, immunization services, and order processing.</li>
+  <li><strong>Single Sign-On:</strong> Simplified login experience for team members access, reducing credential management issues.</li>
+  <li><strong>Roles & Permissions:</strong> Implemented role-based access to ensure security and streamlined task completion.</li>
+  <li><strong>Inventory Replenishment & Order Management:</strong> Streamlined processes to ensure timely stock management and prevent shortages.</li>
+  <li><strong>Unified Platform:</strong> Integrated multiple fragmented systems into a unified platform.</li>
+  <li><strong>Design System:</strong> Created a Design System to standardize UI components and patterns across various teams and features.</li>
+  <li><strong>Mobile Designs:</strong> Developed responsive Mobile designs for various hand held devices.</li>
+</ul>
+
+
+
+
+<h2>Visual Design Examples</h2>
+<p>Here are a small set of some visual design examples from the Walgreens Pharmacy Renewal project, showcasing key features and interfaces developed during the redesign process.</p>
+
+<h3>Global Home Dashboard</h3>
+<img src="images/case_studies/walgreens/wal-design-01.png" alt="Design solution" class="w-75 float-left" loading="lazy" />
+
+<h3>Roles and Permissions</h3>
+<img src="images/case_studies/walgreens/wal-design-02.png" alt="Design solution" class="w-75 float-left" loading="lazy" />
+
+<img src="images/case_studies/walgreens/wal-design-03.png" alt="Design solution" class="w-75 float-left" loading="lazy" />
+
+
+<h3>Mobile Solutions</h3>
+<div class="layout-3col float-left">
+  <img src="images/case_studies/walgreens/wal-mobile-01.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-mobile-02.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+</div>
+
+<div class="layout-3col float-right">
+  <span></span>
+  <img src="images/case_studies/walgreens/wal-mobile-03.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-mobile-04.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+</div>
+
+<div class="layout-3col float-left">
+  <img src="images/case_studies/walgreens/wal-mobile-05.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-mobile-06.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+</div>
+<div class="layout-3col float-right">
+  <span></span>
+  <img src="images/case_studies/walgreens/wal-mobile-07.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-mobile-09.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+</div>
+
+
+
+
+<h2>Post-Launch Evaluation</h2>
+<p>Post-launch evaluations indicated significant improvements in operational efficiency, user satisfaction, and patient care. Ongoing monitoring and updates ensured the system remained aligned with evolving needs and technological advancements.</p>
+
+<h2>Lessons Learned</h2>
+<p>Key lessons from the project included the importance of user involvement throughout the design process, the need for flexibility in addressing unforeseen challenges, and the value of a strong design system in maintaining consistency.</p>
+
+<h2>Impact and Results</h2>
+<p>The new system from the start achieved a 20% reduction in task completion time, improved onboarding for new staff, and enhanced overall workflow efficiency. Users found the new system intuitive, which increased trust and empowerment. This freed-up time allowed staff to focus more on patient care, improving customer satisfaction.</p>
+
+  <img src="images/case_studies/walgreens/wal-pharmacy.jpg" alt="Walgreens pharmacy" class="w-75 float-center" loading="lazy" />
+
+
+
+        </div><!-- /Layout full -->
+      </div><!-- /modal-body -->
+    </div><!-- /modal-content -->
+  </div><!-- /modal -->
+</div><!-- /container-->
+<!-- /END Walgreens Case Study -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- PROJECT SHOWCASE OVERLAY CONTENT -->
+<!-- Teladoc -  Portfolio Showcasey -->
+<div id="showcase-teladoc" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-teladoc', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h2>Teladoc Health</h2>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led the end-to-end redesign of the Aura e-commerce platform, focusing on a streamlined checkout process, personalized product discovery, and a fully responsive mobile-first experience. The project involved extensive user research, A/B testing, and resulted in a 15% increase in conversion rates.</p>
+
+        <h3>Provider Platform - Patient Visit Requests and Scheduling</h3>
+        <div class="layout-full">
+          <img src="images/showcase/teladoc/td-01.png" alt="Teladoc Health image" loading="lazy" />
+          <img src="images/showcase/teladoc/td-02.png" alt="Teladoc Health image" loading="lazy" />
+
+          <div>
+            <h3>Patient After Visit Summary</h3>
+            <img src="images/showcase/teladoc/td-03.png" alt="Teladoc Health image" loading="lazy" />
+          </div>
+        </div>
+
+        <h3>Mobile </h3>
+        <div class="layout-3col">
+          <!--<img src="images/showcase/teladoc/td-04.png" alt="Teladoc Health image" />-->
+          <img src="images/showcase/teladoc/td-06.png" alt="Teladoc Health image" loading="lazy" />
+          <img src="images/showcase/teladoc/td-05.png" alt="Teladoc Health image" loading="lazy" />
+          <img src="images/showcase/teladoc/td-07.png" alt="Teladoc Health image" loading="lazy" />
+        </div>
+
+        
+        <div class="layout-full">
+          <div>
+            <h3>Pharmacy Search</h3>
+            <img src="images/showcase/teladoc/td-08.png" alt="Teladoc Health image" loading="lazy" />
+          </div>
+          <div>
+            <h3>Roles and Permissions Admin System</h3>
+            <img src="images/showcase/teladoc/td-09.png" alt="Teladoc Health image" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Walgreens - Portfolio Showcase -->
+<div id="showcase-walgreens" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-walgreens', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Walgreens</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led enterprise pharmacy management system redesign with focus on patient safety and workflow optimization. Managed multidisciplinary teams and built reusable component libraries.</p>
+
+        <div class="layout-full">
+          <h3>Dashboard</h3>
+          <img src="images/showcase/walgreens/wag-01.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Roles and Permissions - Admin System</h3>
+          <img src="images/showcase/walgreens/wag-02.png" alt="Walgreens image" loading="lazy" />
+          <img src="images/showcase/walgreens/wag-03.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Team Member Details - Wireframe</h3>
+          <img src="images/showcase/walgreens/wag-05.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Team Member Details</h3>
+          <img src="images/showcase/walgreens/wag-06.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Inventory Order Schedule Managment</h3>
+          <img src="images/showcase/walgreens/wag-08.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Roles and Permissions User Journey</h3>
+          <img src="images/showcase/walgreens/wag-09.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Journey Mapping</h3>
+          <img src="images/showcase/walgreens/wag-10.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Process Flow - Brainstorming Session</h3>
+          <img src="images/showcase/walgreens/wag-11.png" alt="Walgreens image" loading="lazy" />
+          <img src="images/showcase/walgreens/wag-12.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Inventory Management - Orders</h3>
+          <img src="images/showcase/walgreens/wag-13.png" alt="Walgreens image" loading="lazy" />
+
+          <h3>Inventory Management</h3>
+          <img src="images/showcase/walgreens/wag-14.png" alt="Walgreens image" loading="lazy" />
+        </div>
+
+<h3>Mobile Solutions</h3>
+<div class="layout-3col float-left">
+  <img src="images/case_studies/walgreens/wal-mobile-01.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-mobile-02.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+</div>
+
+<div class="layout-3col float-right">
+  <span></span>
+  <img src="images/case_studies/walgreens/wal-mobile-03.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-mobile-04.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+</div>
+
+<div class="layout-3col float-left">
+  <img src="images/case_studies/walgreens/wal-mobile-05.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-mobile-06.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+</div>
+<div class="layout-3col float-right">
+  <span></span>
+  <img src="images/case_studies/walgreens/wal-mobile-07.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+  <img src="images/case_studies/walgreens/wal-mobile-09.png" alt="Mobile solution" class="w-100 float-center" loading="lazy" />
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Deluxe - Portfolio Showcase -->
+<div id="showcase-deluxe" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-deluxe', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Deluxe</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led UX for eCommerce site redesign including cart, checkout, and account pages. Developed interactive prototypes and collaborated with stakeholders to balance usability standards with brand requirements.</p>
+
+        <div class="layout-full">
+            <img src="images/showcase/deluxe/deluxe-01.png" alt="Deluxe image" loading="lazy" />
+            <img src="images/showcase/deluxe/deluxe-02.png" alt="Deluxe image" loading="lazy" />
+            <img src="images/showcase/deluxe/deluxe-03.png" alt="Deluxe image" loading="lazy" />
+            <img src="images/showcase/deluxe/deluxe-04.png" alt="Deluxe image" loading="lazy" />
+            <img src="images/showcase/deluxe/deluxe-05.png" alt="Deluxe image" loading="lazy" />
+        </div>
+        <div class="layout-3col">
+            <img src="images/showcase/deluxe/deluxe-06.png" alt="Deluxe image" loading="lazy" />
+        </div>
+        <div class="layout-full">
+            <img src="images/showcase/deluxe/deluxe-07.png" alt="Deluxe image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Tahoe - Portfolio Showcase -->
+<div id="showcase-tahoe" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-tahoe', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Tahoe Partners</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led UX architecture, research, design and development for enterprise solutions across major clients.</p>
+
+        <div class="layout-full">
+            <img src="images/showcase/tahoe/tahoe-00.jpg" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-01.png" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-01a.jpg" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-02.jpg" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-03.jpg" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-04.jpg" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-05.jpg" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-06.jpg" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-07.jpg" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-10.png" alt="Tahoe Partners image" loading="lazy" />
+            <img src="images/showcase/tahoe/tahoe-12.png" alt="Tahoe Partners image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Crowe - Portfolio Showcase -->
+<div id="showcase-crowe" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-crowe', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Crowe Horwath</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Developed comprehensive UI framework and design system for enterprise applications. Conducted user interviews and requirements workshops while building responsive front-end components adhering to brand guidelines and accessibility standards.</p>
+
+        <div class="layout-full">
+            <img src="images/showcase/crowe/crowe-01.png" alt="Crowe Horwath image" loading="lazy" />
+            <img src="images/showcase/crowe/crowe-02.png" alt="Crowe Horwath image" loading="lazy" />
+            <img src="images/showcase/crowe/crowe-03.jpg" alt="Crowe Horwath image" loading="lazy" />
+            <img src="images/showcase/crowe/crowe-04.jpg" alt="Crowe Horwath image" loading="lazy" />
+            <img src="images/showcase/crowe/crowe-05.png" alt="Crowe Horwath image" loading="lazy" />
+            <img src="images/showcase/crowe/crowe-06.png" alt="Crowe Horwath image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- BCBS - Portfolio Showcase -->
+<div id="showcase-bcbs" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-bcbs', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Blue Cross and Blue Shield</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led product design and UI engineering for web applications, public sites, and intranet portals. Managed UI team to implement consistent design systems and collaborated with executive leadership to align business goals with user-centric design.</p>
+
+        <div class="layout-full">
+          <img src="images/showcase/bcbs/bcbs-01-fm.png" alt="Blue Cross Blue Shield image" loading="lazy" />
+        </div>
+        <div class="layout-3col">
+          <img src="images/showcase/bcbs/bcbs-01-m.jpg" alt="Blue Cross Blue Shield image" loading="lazy" />
+          <img src="images/showcase/bcbs/bcbs-02-m.jpg" alt="Blue Cross Blue Shield image" loading="lazy" />
+        </div>
+        <div class="layout-full">
+          <img src="images/showcase/bcbs/bcbs-02.jpg" alt="Blue Cross Blue Shield image" loading="lazy" />
+          <img src="images/showcase/bcbs/bcbs-03.png" alt="Blue Cross Blue Shield image" loading="lazy" />
+          <img src="images/showcase/bcbs/bcbs-04.png" alt="Blue Cross Blue Shield image" loading="lazy" />
+          <img src="images/showcase/bcbs/bcbs-07.jpg" alt="Blue Cross Blue Shield image" loading="lazy" />
+          <img src="images/showcase/bcbs/bcbs-08.jpg" alt="Blue Cross Blue Shield image" loading="lazy" />
+          <img src="images/showcase/bcbs/bcbs-09.png" alt="Blue Cross Blue Shield image" loading="lazy" />
+          <img src="images/showcase/bcbs/bcbs-10.jpg" alt="Blue Cross Blue Shield image" loading="lazy" />
+          <img src="images/showcase/bcbs/bcbs-11.png" alt="Blue Cross Blue Shield image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Dearborn - Portfolio Showcase -->
+<div id="showcase-dearborn" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-dearborn', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Dearborn National</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led design of internet membership portal incorporating competitive research and user feedback. Translated complex insurance processes into intuitive workflows while championing iterative testing to refine user experience.</p>
+
+        <div class="layout-full">
+          <img src="images/showcase/dearborn/dearborn-06.jpg" alt="Dearborn National image" loading="lazy" />
+          <img src="images/showcase/dearborn/dearborn-07.jpg" alt="Dearborn National image" loading="lazy" />
+          <img src="images/showcase/dearborn/dearborn-08.jpg" alt="Dearborn National image" loading="lazy" />
+          <img src="images/showcase/dearborn/dearborn-01.png" alt="Dearborn National image" loading="lazy" />
+          <img src="images/showcase/dearborn/dearborn-02.png" alt="Dearborn National image" loading="lazy" />
+          <img src="images/showcase/dearborn/dearborn-03.jpg" alt="Dearborn National image" loading="lazy" />
+          <img src="images/showcase/dearborn/dearborn-04.jpg" alt="Dearborn National image" loading="lazy" />
+          <img src="images/showcase/dearborn/dearborn-05.jpg" alt="Dearborn National image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Potbelly - Portfolio Showcase -->
+<div id="showcase-potbelly" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-potbelly', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Potbelly Sandwich Shop</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led customer-facing website redesign and development for restaurant chain. Performed usability tests to identify navigation pain points and optimize user flow while ensuring brand standard adherence across digital channels.</p>
+
+        <div class="layout-full">
+          <img src="images/showcase/potbelly/potbelly-01.jpg" alt="Potbelly Sandwich Shop image" loading="lazy" />
+          <img src="images/showcase/potbelly/potbelly-02.jpg" alt="Potbelly Sandwich Shop image" loading="lazy" />
+          <img src="images/showcase/potbelly/potbelly-03.jpg" alt="Potbelly Sandwich Shop image" loading="lazy" />
+          <img src="images/showcase/potbelly/potbelly-04.jpg" alt="Potbelly Sandwich Shop image" loading="lazy" />
+          <img src="images/showcase/potbelly/potbelly-05.jpg" alt="Potbelly Sandwich Shop image" loading="lazy" />
+          <img src="images/showcase/potbelly/potbelly-05a.png" alt="Potbelly Sandwich Shop image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- OfficeMax - Portfolio Showcase -->
+<div id="showcase-officemax" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-officemax', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>OfficeMax</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led e-commerce site redesign focusing on usability and brand alignment. Conducted user testing that improved site layout and checkout flows while supervising development teams to ensure coding standards compliance.</p>
+
+        <div class="layout-full">
+            <img src="images/showcase/officemax/officemax-01.jpg" alt="OfficeMax image" loading="lazy" />
+            <img src="images/showcase/officemax/officemax-02.jpg" alt="OfficeMax image" loading="lazy" />
+            <img src="images/showcase/officemax/officemax-03.jpg" alt="OfficeMax image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Huron - Portfolio Showcase -->
+<div id="showcase-huron" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-huron', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Huron Consulting</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led UX, architecture, and front-end development for award-winning intranet portal. Facilitated user research and iterative testing while establishing site-wide design system that won Best Intranet Design of 2010 from Nielsen Norman Group.</p>
+
+        <div class="layout-full">
+            <img src="images/showcase/huron/huron-05.jpg" alt="Huron Consulting image" loading="lazy" />
+            <img src="images/showcase/huron/huron-06.jpg" alt="Huron Consulting image" loading="lazy" />
+            <img src="images/showcase/huron/huron-07.jpg" alt="Huron Consulting image" loading="lazy" />
+            <img src="images/showcase/huron/huron-08.jpg" alt="Huron Consulting image" loading="lazy" />
+            <img src="images/showcase/huron/huron-09.jpg" alt="Huron Consulting image" loading="lazy" />
+            <img src="images/showcase/huron/huron-01.jpg" alt="Huron Consulting image" loading="lazy" />
+            <img src="images/showcase/huron/huron-02.jpg" alt="Huron Consulting image" loading="lazy" />
+            <img src="images/showcase/huron/huron-03.jpg" alt="Huron Consulting image" loading="lazy" />
+            <img src="images/showcase/huron/huron-04.jpg" alt="Huron Consulting image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Sears - Portfolio Showcase -->
+<div id="showcase-sears" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-sears', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>Sears</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Led design and front-end development for multiple retail websites including Sears.com, Kenmore.com, and Craftsman.com. Established team best practices and conducted R&D on emerging web standards, leading to major site innovations.  Golden days of the internet, 2005 designs!</p>
+
+        <div class="layout-full">
+            <img src="images/showcase/sears/sears-01.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-02.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-03.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-04.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-05.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-06.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-07.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-08.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-09.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-10.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-11.jpg" alt="Sears image" loading="lazy" />
+            <img src="images/showcase/sears/sears-12.jpg" alt="Sears image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- NCH - Portfolio Showcase -->
+<div id="showcase-nch" class="modal-backdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="toggleOverlay('showcase-nch', false)"> ✕ </button>
+    <div class="modal-content">
+      <header>
+        <h3>NCH</h3>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Architected and designed payment policies process application for coupon redemption industry. Developed information architecture, wireframes, and prototypes with clear handoff documentation to streamline development cycles.</p>
+
+        <div class="layout-full">
+            <img src="images/showcase/nch/nch-03.jpg" alt="NCH image" loading="lazy" />
+            <img src="images/showcase/nch/nch-04.jpg" alt="NCH image" loading="lazy" />
+            <img src="images/showcase/nch/nch-05.jpg" alt="NCH image" loading="lazy" />
+            <img src="images/showcase/nch/nch-06.jpg" alt="NCH image" loading="lazy" />
+            <img src="images/showcase/nch/nch-01.jpg" alt="NCH image" loading="lazy" />
+            <img src="images/showcase/nch/nch-02.jpg" alt="NCH image" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+</div>
+<!-- ================================================================
+     END OF OVERLAYS -->
+
+
+
+
+
+
+    <script src="js/main.js"></script>
   </body>
 </html>
